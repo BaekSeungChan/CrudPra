@@ -47,8 +47,18 @@ public class CategoryCarServiceImpl implements CategoryCarService {
     public void deleteCategoryCarById(long id){
         CategoryCar categoryCar = categoryCarRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
         categoryCarRepository.delete(categoryCar);
+    }
 
+    @Override
+    public CategoryCarDto updateCategoryCar(CategoryCarDto categoryCarDto, long id){
+        CategoryCar categoryCar = categoryCarRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
 
+        categoryCar.setColor(categoryCarDto.getColor());
+        categoryCar.setName(categoryCarDto.getName());
+
+        CategoryCar saveCategoryCar = categoryCarRepository.save(categoryCar);
+
+        return modelMapper.map(saveCategoryCar, CategoryCarDto.class);
     }
 
 }

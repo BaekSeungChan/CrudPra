@@ -39,4 +39,11 @@ public class CategoryCarController {
         categoryCarService.deleteCategoryCarById(id);
         return new ResponseEntity<>("deleted post", HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryCarDto> updateCategoryCar(@PathVariable(name = "id") long id, @Valid @RequestBody CategoryCarDto categoryCarDto){
+        CategoryCarDto categoryCarResponse = categoryCarService.updateCategoryCar(categoryCarDto, id);
+
+        return new ResponseEntity<>(categoryCarResponse, HttpStatus.OK);
+    }
 }

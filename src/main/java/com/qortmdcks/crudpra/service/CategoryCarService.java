@@ -14,4 +14,6 @@ public interface CategoryCarService {
     CategoryCarDto getCategoryCarById(long id);
 
     void deleteCategoryCarById(long id);
+
+    CategoryCarDto updateCategoryCar(CategoryCarDto categoryCarDto, long id);
 }
