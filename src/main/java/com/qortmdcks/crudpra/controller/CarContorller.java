@@ -35,4 +35,10 @@ public class CarContorller {
     public ResponseEntity<CarDto> getCarById(@PathVariable(name = "id") long id){
         return ResponseEntity.ok(carService.getCarById(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCarById(@PathVariable(name = "id") long id){
+        carService.deleteCarById(id);
+        return new ResponseEntity<>("deleted post", HttpStatus.OK);
+    }
 }

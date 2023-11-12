@@ -44,4 +44,10 @@ public class CarServiceImpl implements CarService {
         return modelMapper.map(car, CarDto.class);
     }
 
+    @Override
+    public void deleteCarById(long id){
+        Car car = carRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
+        carRepository.delete(car);
+    }
+
 }
