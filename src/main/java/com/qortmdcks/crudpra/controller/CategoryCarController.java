@@ -5,10 +5,9 @@ import com.qortmdcks.crudpra.service.CategoryCarService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -23,5 +22,10 @@ public class CategoryCarController {
     @PostMapping
     public ResponseEntity<CategoryCarDto> createCategoryCar(@Valid @RequestBody CategoryCarDto categoryCarDto){
         return new ResponseEntity<>(categoryCarService.createCategoryCar(categoryCarDto), HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+        public ResponseEntity<List<CategoryCarDto>> getAllCategoryCar(){
+            return ResponseEntity.ok(categoryCarService.getAllCategoryCar());
     }
 }
