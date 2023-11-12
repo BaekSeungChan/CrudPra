@@ -37,4 +37,11 @@ public class CarServiceImpl implements CarService {
         return cars.stream().map((car) -> modelMapper.map(car, CarDto.class)).collect(Collectors.toList());
     }
 
+    @Override
+    public CarDto getCarById(long id){
+        Car car = carRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
+
+        return modelMapper.map(car, CarDto.class);
+    }
+
 }

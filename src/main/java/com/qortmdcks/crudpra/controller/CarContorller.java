@@ -30,4 +30,9 @@ public class CarContorller {
     public ResponseEntity<List<CarDto>> getAllCar(){
         return ResponseEntity.ok(carService.getAllCar());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CarDto> getCarById(@PathVariable(name = "id") long id){
+        return ResponseEntity.ok(carService.getCarById(id));
+    }
 }
