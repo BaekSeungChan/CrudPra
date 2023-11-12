@@ -10,7 +10,7 @@ public class CrudPraApplication {
 
     @Bean
     public ModelMapper modelMapper(){
-        return modelMapper();
+        return new ModelMapper();
     }
 
     public static void main(String[] args) {
