@@ -2,6 +2,8 @@ package com.qortmdcks.crudpra.controller;
 
 import com.qortmdcks.crudpra.payload.CategoryCarDto;
 import com.qortmdcks.crudpra.service.CategoryCarService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +43,11 @@ public class CategoryCarController {
     }
 
     @PutMapping("/{id}")
+    @Operation(
+            summary = "Update Car",
+            description = "Update Car API"
+    )
+    @ApiResponse(responseCode = "200", description = "Update")
     public ResponseEntity<CategoryCarDto> updateCategoryCar(@PathVariable(name = "id") long id, @Valid @RequestBody CategoryCarDto categoryCarDto){
         CategoryCarDto categoryCarResponse = categoryCarService.updateCategoryCar(categoryCarDto, id);
 
