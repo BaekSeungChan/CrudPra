@@ -28,4 +28,9 @@ public class CategoryCarController {
         public ResponseEntity<List<CategoryCarDto>> getAllCategoryCar(){
             return ResponseEntity.ok(categoryCarService.getAllCategoryCar());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryCarDto> getCategoryCarById(@PathVariable(name = "id") long id){
+        return ResponseEntity.ok(categoryCarService.getCategoryCarById(id));
+    }
 }
