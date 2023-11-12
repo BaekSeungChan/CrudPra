@@ -33,4 +33,10 @@ public class CategoryCarController {
     public ResponseEntity<CategoryCarDto> getCategoryCarById(@PathVariable(name = "id") long id){
         return ResponseEntity.ok(categoryCarService.getCategoryCarById(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCategoryCarById(@PathVariable(name = "id") long id){
+        categoryCarService.deleteCategoryCarById(id);
+        return new ResponseEntity<>("deleted post", HttpStatus.OK);
+    }
 }

@@ -12,4 +12,6 @@ public interface CategoryCarService {
     List<CategoryCarDto> getAllCategoryCar();
 
     CategoryCarDto getCategoryCarById(long id);
+
+    void deleteCategoryCarById(long id);
 }
