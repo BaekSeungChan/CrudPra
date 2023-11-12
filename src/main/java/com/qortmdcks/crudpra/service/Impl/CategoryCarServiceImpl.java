@@ -1,5 +1,7 @@
 package com.qortmdcks.crudpra.service.Impl;
 
+import com.qortmdcks.crudpra.entity.CategoryCar;
+import com.qortmdcks.crudpra.payload.CategoryCarDto;
 import com.qortmdcks.crudpra.repository.CategoryCarRepository;
 import com.qortmdcks.crudpra.service.CategoryCarService;
 import org.modelmapper.ModelMapper;
@@ -16,5 +18,12 @@ public class CategoryCarServiceImpl implements CategoryCarService {
         this.modelMapper = modelMapper;
     }
 
+    @Override
+    public CategoryCarDto createCategoryCar(CategoryCarDto categoryCarDto){
+        CategoryCar categoryCar = modelMapper.map(categoryCarDto, CategoryCar.class);
+        CategoryCar saveCategoryCar = categoryCarRepository.save(categoryCar);
+
+        return modelMapper.map(saveCategoryCar, CategoryCarDto.class);
+    }
 
 }
