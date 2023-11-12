@@ -50,4 +50,16 @@ public class CarServiceImpl implements CarService {
         carRepository.delete(car);
     }
 
+    @Override
+    public CarDto updateCar(CarDto carDto, long id){
+        Car car = carRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
+
+        car.setName(carDto.getName());
+        car.setPrice(carDto.getPrice());
+
+        Car saveCar = carRepository.save(car);
+
+        return modelMapper.map(saveCar, CarDto.class);
+    }
+
 }
