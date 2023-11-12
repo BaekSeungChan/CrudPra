@@ -9,6 +9,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CarServiceImpl implements CarService {
     private CarRepository carRepository;
@@ -25,6 +28,13 @@ public class CarServiceImpl implements CarService {
         Car saveCar = carRepository.save(car);
 
         return modelMapper.map(saveCar, CarDto.class);
+    }
+
+    @Override
+    public List<CarDto> getAllCar(){
+        List<Car> cars = carRepository.findAll();
+
+        return cars.stream().map((car) -> modelMapper.map(car, CarDto.class)).collect(Collectors.toList());
     }
 
 }
